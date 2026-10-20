@@ -16,27 +16,27 @@ public class EmailService {
 
     private final RestClient.Builder restClientBuilder = null;
 
-    @Value("${marketmax.mail.from}")
+    @Value("${ellenco.mail.from}")
     private String fromAddress;
 
     @Value("${resend.api.key}")
     private String resendApiKey;
 
-    @Value("${marketmax.app.base-url}")
+    @Value("${ellenco.app.base-url}")
     private String appBaseUrl;
 
-    @Value("${marketmax.reset-token.expiration-minutes}")
+    @Value("${ellenco.reset-token.expiration-minutes}")
     private long expirationMinutes;
 
     public void sendPasswordResetEmail(String toEmail, String userName, String token) {
         String resetLink = appBaseUrl + "/redefinir-senha.html?token=" + token;
 
         String htmlContent = "<p>Olá, <strong>" + userName + "</strong>!</p>" +
-                "<p>Recebemos uma solicitação para redefinir a senha da sua conta MarketMax.</p>" +
+                "<p>Recebemos uma solicitação para redefinir a senha da sua conta Ellenco.</p>" +
                 "<p><a href=\"" + resetLink + "\" style=\"padding: 10px 15px; background: #1976D2; color: white; text-decoration: none; border-radius: 5px;\">Redefinir Senha</a></p>" +
                 "<p>Este link é válido por " + expirationMinutes + " minutos.</p>" +
                 "<p>Se você não solicitou, apenas ignore este e-mail.</p>" +
-                "<p>Equipe MarketMax</p>";
+                "<p>Equipe Ellenco</p>";
 
         try {
             RestClient restClient = restClientBuilder
@@ -48,7 +48,7 @@ public class EmailService {
             Map<String, Object> requestBody = Map.of(
                     "from", fromAddress,
                     "to", new String[]{toEmail},
-                    "subject", "MarketMax — Redefinição de senha",
+                    "subject", "Ellenco — Redefinição de senha",
                     "html", htmlContent
             );
 
