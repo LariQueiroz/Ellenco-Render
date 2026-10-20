@@ -1,3 +1,4 @@
+
 package com.ellenco.ellenco.model;
 
 import jakarta.persistence.*;
@@ -10,8 +11,7 @@ public class FotoConteudo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Lob
-    @Column(nullable = false, columnDefinition = "LONGBLOB")
+    @Column(nullable = false, columnDefinition = "BYTEA")
     private byte[] dados;
 
     public FotoConteudo() {
@@ -21,8 +21,15 @@ public class FotoConteudo {
         this.dados = dados;
     }
 
-    public Long getId() { return id; }
+    public Long getId() {
+        return id;
+    }
 
-    public byte[] getDados() { return dados; }
-    public void setDados(byte[] dados) { this.dados = dados; }
+    public byte[] getDados() {
+        return dados;
+    }
+
+    public void setDados(byte[] dados) {
+        this.dados = dados;
+    }
 }
