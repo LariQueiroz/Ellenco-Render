@@ -120,7 +120,7 @@ public class UsuarioController {
         usuarioService.gerarTokenRecuperacao(dados.email()).ifPresent(usuario -> {
             String link = baseUrl + "/redefinir-senha.html?token=" + usuario.getTokenRecuperacao();
             try {
-                emailService.enviarEmailRecuperacao(usuario.getEmail(), link);
+                //EmailService..enviarEmailRecuperacao(usuario.getEmail(), link);
             } catch (Exception e) {
                 // não revela ao cliente se o e-mail existe ou se o envio falhou
                 log.error("Falha ao enviar e-mail de recuperação para o usuário {}", usuario.getId(), e);
