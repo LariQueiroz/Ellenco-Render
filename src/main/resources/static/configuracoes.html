@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ellenco - Configurações</title>
+
+<link rel="icon" href="img/logo-ellenco.png">
+<link rel="stylesheet" href="css/app.css">
+<script src="js/tema.js"></script>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: "class",
+theme: {
+extend: {
+colors: {
+ellenco: "#08088F"
+}
+}
+}
+}
+</script>
+</head>
+
+<body class="bg-gray-50 min-h-screen transition-colors duration-300">
+
+<div class="flex min-h-screen">
+
+
+    
+
+    <aside id="sidebar"></aside>
+
+
+
+    <!-- ================= CONTEÚDO ================= -->
+
+    <main class="flex-1 min-w-0 p-4 md:p-8">
+
+        <div class="max-w-4xl mx-auto">
+
+
+            <!-- TÍTULO -->
+
+            <div class="mb-8">
+
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-white">
+                    Configurações
+                </h1>
+
+                <p class="text-gray-500 dark:text-gray-300 mt-1">
+                    Gerencie sua conta e as preferências do sistema.
+                </p>
+
+            </div>
+
+
+
+            <!-- ================= CONTA ================= -->
+
+            <section class="bg-white rounded-xl shadow-sm border p-6 mb-6">
+
+                <div class="mb-6">
+
+                    <h2 class="text-xl font-bold text-gray-800">
+                        👤 Conta
+                    </h2>
+
+                    <p class="text-gray-500 text-sm">
+                        Informações da sua conta.
+                    </p>
+
+                </div>
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+
+                    <!-- NOME -->
+
+                    <div>
+
+                        <label class="block text-sm font-medium mb-2 text-gray-700">
+
+                            Nome do usuário
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nomeUsuario"
+                            placeholder="Nome do usuário"
+                            class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div>
+
+                        <label class="block text-sm font-medium mb-2 text-gray-700">
+
+                            E-mail
+
+                        </label>
+
+                        <input
+                            type="email"
+                            id="emailUsuario"
+                            placeholder="email@exemplo.com"
+                            class="w-full border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+
+                    </div>
+
+
+
+                    <!-- CARGO -->
+
+                    <div>
+
+                        <label class="block text-sm font-medium mb-2 text-gray-700">
+
+                            Cargo
+
+                        </label>
+
+                        <select
+                            id="cargoUsuario"
+                            class="w-full border rounded-lg px-4 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        >
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="Administrador">
+                                Administrador
+                            </option>
+
+                            <option value="Engenheiro">
+                                Engenheiro
+                            </option>
+
+                            <option value="Técnico">
+                                Técnico
+                            </option>
+
+                            <option value="Supervisor">
+                                Supervisor
+                            </option>
+
+                            <option value="Colaborador">
+                                Colaborador
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= SENHA ================= -->
+
+            <section class="bg-white rounded-xl shadow-sm border p-6 mb-6">
+
+                <div class="mb-6">
+
+                    <h2 class="text-xl font-bold text-gray-800">
+                        🔐 Alterar senha
+                    </h2>
+
+                    <p class="text-gray-500 text-sm">
+                        Altere a senha utilizada para acessar sua conta.
+                    </p>
+
+                </div>
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+
+                    <!-- NOVA SENHA -->
+
+                    <div>
+
+                        <label class="block text-sm font-medium mb-2 text-gray-700">
+
+                            Nova senha
+
+                        </label>
+
+                        <div class="relative">
+
+                            <input
+                                type="password"
+                                id="novaSenha"
+                                placeholder="Digite a nova senha"
+                                class="w-full border rounded-lg px-4 py-3 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+
+                            <button
+                                type="button"
+                                onclick="mostrarSenha('novaSenha', this)"
+                                class="absolute right-3 top-3 text-gray-500"
+                            >
+                                👁️
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- CONFIRMAR -->
+
+                    <div>
+
+                        <label class="block text-sm font-medium mb-2 text-gray-700">
+
+                            Confirmar nova senha
+
+                        </label>
+
+                        <div class="relative">
+
+                            <input
+                                type="password"
+                                id="confirmarSenha"
+                                placeholder="Confirme a nova senha"
+                                class="w-full border rounded-lg px-4 py-3 pr-12 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            >
+
+                            <button
+                                type="button"
+                                onclick="mostrarSenha('confirmarSenha', this)"
+                                class="absolute right-3 top-3 text-gray-500"
+                            >
+                                👁️
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="flex items-center gap-4 mt-5">
+                    <button
+                        type="button"
+                        onclick="alterarSenha()"
+                        class="bg-[#08088F] text-white px-6 py-3 rounded-lg hover:bg-blue-800"
+                    >
+                        Alterar senha
+                    </button>
+                    <p
+                        id="mensagemSenha"
+                        class="text-sm"
+                    ></p>
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= APARÊNCIA ================= -->
+
+            <section class="bg-white rounded-xl shadow-sm border p-6 mb-6">
+
+                <div class="flex items-center justify-between">
+
+
+                    <div>
+
+                        <h2 class="text-xl font-bold text-gray-800">
+                            🌙 Aparência
+                        </h2>
+
+                        <p class="text-gray-500 text-sm mt-1">
+                            Ative o modo escuro para utilizar o sistema com menos luminosidade.
+                        </p>
+
+                    </div>
+
+
+                    <!-- SWITCH -->
+
+                    <label class="relative inline-flex items-center cursor-pointer">
+
+                        <input
+                            type="checkbox"
+                            id="modoEscuro"
+                            class="sr-only peer"
+                        >
+
+                        <div
+                            class="w-14 h-7 bg-gray-300 rounded-full peer
+                            peer-checked:bg-[#08088F]
+                            after:content-['']
+                            after:absolute
+                            after:top-[3px]
+                            after:left-[3px]
+                            after:bg-white
+                            after:rounded-full
+                            after:h-6
+                            after:w-6
+                            after:transition-all
+                            peer-checked:after:translate-x-7"
+                        ></div>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ================= BOTÕES ================= -->
+
+            <div class="flex justify-end gap-3">
+
+                <button
+                    type="button"
+                    onclick="voltar()"
+                    class="border border-gray-300 px-6 py-3 rounded-lg hover:bg-gray-100"
+                >
+                    Voltar
+                </button>
+
+
+                <button
+                    type="button"
+                    onclick="salvarConfiguracoes()"
+                    class="bg-[#08088F] text-white px-6 py-3 rounded-lg hover:bg-blue-800"
+                >
+                    Salvar alterações
+                </button>
+
+            </div>
+
+
+            <p
+                id="mensagem"
+                class="text-center mt-4 font-medium"
+            ></p>
+
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
+<script src="js/configuracoes.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ellenco - Dashboard</title>
+
+<link rel="icon" href="img/logo-ellenco.png">
+<link rel="stylesheet" href="css/app.css">
+<script src="js/tema.js"></script>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+darkMode: "class",
+theme: {
+extend: {
+colors: {
+ellenco: "#08088F"
+}
+}
+}
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+
+<div class="flex min-h-screen">
+
+<aside id="sidebar"></aside>
+
+<main class="flex-1 min-w-0 p-4 md:p-8">
+
+<div class="max-w-6xl mx-auto">
+
+<!-- CABEÇALHO -->
+<div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+<div>
+<h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
+<p class="text-gray-500 mt-1">Visão geral das obras e dos registros semanais.</p>
+</div>
+
+<div class="flex items-center gap-3">
+<div class="text-right">
+<p class="font-semibold text-gray-800" data-user-nome>&nbsp;</p>
+<p class="text-xs text-gray-500" data-user-cargo></p>
+</div>
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">👤</div>
+</div>
+</div>
+
+<!-- ALERTA: obras sem registro -->
+<div id="alerta" class="hidden bg-amber-50 border border-amber-200 text-amber-800 rounded-xl p-4 mb-6 text-sm"></div>
+
+<!-- INDICADORES -->
+<div id="kpis" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+<div class="skeleton h-24 rounded-xl"></div><div class="skeleton h-24 rounded-xl"></div>
+<div class="skeleton h-24 rounded-xl"></div><div class="skeleton h-24 rounded-xl"></div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+<!-- OBRAS EM ANDAMENTO -->
+<section class="lg:col-span-2 bg-white rounded-xl shadow-sm border p-6">
+<div class="flex justify-between items-center mb-5">
+<h2 class="font-bold text-lg">Obras em andamento</h2>
+<a href="obras.html" class="text-sm text-blue-600 hover:underline">Ver todas</a>
+</div>
+<div id="obrasAndamento" class="space-y-5"></div>
+</section>
+
+<!-- REGISTROS POR SEMANA -->
+<section class="bg-white rounded-xl shadow-sm border p-6">
+<h2 class="font-bold text-lg mb-5">Registros por semana</h2>
+<div id="graficoSemanas" class="flex items-end gap-2 h-40"></div>
+<p class="text-xs text-gray-500 mt-3">Últimas 8 semanas (início na segunda-feira).</p>
+</section>
+
+<!-- CLIMA / TURNO -->
+<section class="bg-white rounded-xl shadow-sm border p-6">
+<h2 class="font-bold text-lg mb-5">Clima nos registros</h2>
+<div id="graficoClima" class="space-y-3"></div>
+</section>
+
+<section class="bg-white rounded-xl shadow-sm border p-6">
+<h2 class="font-bold text-lg mb-5">Registros por turno</h2>
+<div id="graficoTurno" class="space-y-3"></div>
+</section>
+
+<!-- ÚLTIMOS REGISTROS -->
+<section class="bg-white rounded-xl shadow-sm border p-6">
+<h2 class="font-bold text-lg mb-5">Últimos registros</h2>
+<div id="ultimos" class="space-y-4"></div>
+</section>
+
+<!-- MAPA -->
+<section class="lg:col-span-3 bg-white rounded-xl shadow-sm border p-6">
+<h2 class="font-bold text-lg mb-1">Localização das obras</h2>
+<p class="text-sm text-gray-500 mb-4">Última posição georreferenciada registrada em cada obra.</p>
+<div id="mapa" class="w-full h-80 rounded-lg overflow-hidden border"></div>
+<p id="mapaVazio" class="hidden text-sm text-gray-500 mt-3">Nenhum registro com localização ainda. Use “Obter localização” ao lançar um registro.</p>
+</section>
+
+</div>
+</div>
+
+</main>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>

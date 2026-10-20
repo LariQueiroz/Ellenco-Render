@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nova Senha - Ellenco</title>
+
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/logo-ellenco.png">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/tema.js"></script>
+</head>
+
+<body
+    class="min-h-screen bg-gray-100 flex items-center justify-center px-4"
+>
+
+    <!-- CARD -->
+    <div
+        class="bg-white w-full max-w-[390px] rounded-[35px] shadow-2xl p-8 md:p-10"
+    >
+
+        <!-- LOGO -->
+        <div class="flex justify-center mb-6">
+
+            <img
+                src="img/logo-ellenco.png"
+                alt="Logo Ellenco"
+                class="w-[190px] h-auto"
+            >
+
+        </div>
+
+
+        <!-- TÍTULO -->
+        <h1 class="text-center text-2xl font-bold text-black mb-2">
+            Nova senha
+        </h1>
+        <p class="text-center text-sm text-gray-600 mb-7">
+            Digite e confirme a nova senha para acessar sua conta.
+        </p>
+        <form id="formRedefinir">
+            <div class="mb-4">
+                <label for="novaSenhaRedefinir" class="block text-sm font-semibold text-black mb-2">
+                    Nova senha
+                </label>
+                <div class="relative">
+                    <input
+                        type="password"
+                        id="novaSenhaRedefinir"
+                        placeholder="Mínimo de 6 caracteres"
+                        required
+                        minlength="6"
+                        autocomplete="new-password"
+                        class="w-full h-11 px-4 pr-12 bg-gray-100 border border-gray-300 rounded-lg outline-none text-sm focus:border-purple-700 focus:ring-1 focus:ring-purple-700"
+                    >
+                    <button type="button" id="btnMostrarNovaSenha"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500" aria-label="Mostrar senha">👁️</button>
+                </div>
+            </div>
+            <div class="mb-6">
+                <label for="confirmarSenhaRedefinir" class="block text-sm font-semibold text-black mb-2">
+                    Confirmar nova senha
+                </label>
+                <input
+                    type="password"
+                    id="confirmarSenhaRedefinir"
+                    placeholder="Repita a nova senha"
+                    required
+                    autocomplete="new-password"
+                    class="w-full h-11 px-4 bg-gray-100 border border-gray-300 rounded-lg outline-none text-sm focus:border-purple-700 focus:ring-1 focus:ring-purple-700"
+                >
+            </div>
+            <button
+                type="submit"
+                class="w-full h-11 bg-[#2100a8] hover:bg-[#180078] text-white font-semibold rounded-lg transition"
+            >
+                Salvar nova senha
+            </button>
+            <p id="mensagemRedefinir" class="text-center text-sm mt-4"></p>
+        </form>
+
+        <!-- VOLTAR -->
+        <div class="text-center mt-7">
+
+            <a
+                href="index.html"
+                class="text-blue-600 text-sm hover:underline"
+            >
+                Voltar para o Login
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+<script src="js/app.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

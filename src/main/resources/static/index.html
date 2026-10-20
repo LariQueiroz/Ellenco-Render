@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login - Ellenco</title>
+
+    <!-- TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/logo-ellenco.png">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/tema.js"></script>
+</head>
+
+
+<body
+    class="min-h-screen bg-cover bg-center bg-no-repeat"
+    style="background-image: url('img/fundo-login.avif');"
+>
+
+
+    <!-- FUNDO DA PÁGINA -->
+    <div
+        class="min-h-screen flex items-center justify-center bg-black/20 px-4"
+    >
+
+
+        <!-- CARD DO LOGIN -->
+        <div
+            class="w-full max-w-[390px] bg-white rounded-[35px] shadow-2xl px-8 py-9"
+        >
+
+
+            <!-- LOGO -->
+            <div
+                class="flex justify-center mb-6"
+            >
+
+                <img
+                    src="img/logo-ellenco.png"
+                    alt="Logo Ellenco"
+                    class="w-[190px] h-auto"
+                >
+
+            </div>
+
+
+            <!-- TÍTULO -->
+            <h1
+                class="text-center text-2xl font-bold text-black mb-2"
+            >
+                Bem-vindo de volta!
+            </h1>
+
+
+            <!-- TEXTO -->
+            <p
+                class="text-center text-sm text-gray-600 mb-7"
+            >
+                Faça login para acessar sua conta
+            </p>
+
+
+            <!-- FORMULÁRIO -->
+            <form id="formLogin">
+
+
+                <!-- CAMPO LOGIN -->
+                <div class="mb-5">
+
+                    <label
+                        for="login"
+                        class="block text-sm font-semibold text-black mb-2"
+                    >
+                        Login
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="login"
+                        name="login"
+                        placeholder="Digite seu login"
+                        required
+                        autocomplete="username"
+                        class="w-full h-11 px-4 bg-gray-100 border border-gray-300 rounded-lg outline-none text-sm focus:border-purple-700 focus:ring-1 focus:ring-purple-700"
+                    >
+
+                </div>
+
+
+                <!-- CAMPO SENHA -->
+                <div class="mb-3">
+
+                    <label
+                        for="senha"
+                        class="block text-sm font-semibold text-black mb-2"
+                    >
+                        Senha
+                    </label>
+
+
+                    <div class="relative">
+
+
+                        <input
+                            type="password"
+                            id="senha"
+                            name="senha"
+                            placeholder="Digite sua senha"
+                            required
+                            autocomplete="current-password"
+                            class="w-full h-11 px-4 pr-12 bg-gray-100 border border-gray-300 rounded-lg outline-none text-sm focus:border-purple-700 focus:ring-1 focus:ring-purple-700"
+                        >
+
+
+                        <!-- BOTÃO MOSTRAR SENHA -->
+                        <button
+                            type="button"
+                            id="btnMostrarSenhaLogin"
+                            class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-purple-700"
+                            aria-label="Mostrar senha"
+                        >
+                            👁️
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- ESQUECI MINHA SENHA -->
+                <div class="mb-5">
+
+                    <a
+                        href="recuperar.html"
+                        class="text-blue-600 text-sm hover:underline"
+                    >
+                        Esqueci minha senha
+                    </a>
+
+                </div>
+
+
+                <!-- BOTÃO ENTRAR -->
+                <button
+                    type="submit"
+                    class="w-full h-11 bg-[#2100a8] hover:bg-[#180078] text-white font-semibold rounded-lg transition duration-200"
+                >
+                    Entrar
+                </button>
+
+
+                <!-- MENSAGEM DO LOGIN -->
+                <p
+                    id="mensagemLogin"
+                    class="text-center text-sm mt-4"
+                ></p>
+
+
+            </form>
+
+
+            <!-- CRIAR LOGIN -->
+            <div
+                class="text-center mt-7"
+            >
+
+                <span
+                    class="text-sm text-gray-700"
+                >
+                    Ainda não tem uma conta?
+                </span>
+
+
+                <!-- ABRE DIRETAMENTE A PÁGINA DE CADASTRO -->
+                <a
+                    href="cadastro.html"
+                    class="text-blue-600 text-sm ml-1 hover:underline"
+                >
+                    Criar Login
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BANCO LOCAL - IndexedDB
+         ========================================== -->
+
+  
+
+
+    <!-- ==========================================
+         JAVASCRIPT PRINCIPAL
+         ========================================== -->
+
+    <script src="js/app.js"></script>
+    <script src="js/script.js"></script>
+
+
+    <!-- ==========================================
+         SERVICE WORKER
+         ========================================== -->
+
+    <script>
+
+        if ("serviceWorker" in navigator) {
+
+            window.addEventListener(
+                "load",
+                function () {
+
+                    navigator.serviceWorker
+                        .register("/service-worker.js")
+
+                        .then(
+                            function () {
+
+                                console.log(
+                                    "Service Worker registrado com sucesso!"
+                                );
+
+                            }
+                        )
+
+                        .catch(
+                            function (erro) {
+
+                                console.error(
+                                    "Erro ao registrar o Service Worker:",
+                                    erro
+                                );
+
+                            }
+                        );
+
+                }
+            );
+
+        }
+
+    </script>
+</body>
+
+</html>

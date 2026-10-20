@@ -1,0 +1,67 @@
+/* =====================================================
+   ELLENCO - estilos compartilhados
+   (o restante do visual vem do Tailwind)
+===================================================== */
+
+/* ---------- Modo escuro (html.dark) ---------- */
+html.dark body { background: #0f172a; color: #e5e7eb; }
+html.dark .bg-gray-50 { background-color: #0f172a; }
+html.dark .bg-white { background-color: #1e293b; }
+html.dark .bg-gray-100 { background-color: #273449; }
+html.dark .bg-gray-200 { background-color: #334155; }
+html.dark .bg-gray-300 { background-color: #475569; }
+html.dark .hover\:bg-gray-100:hover { background-color: #273449; }
+html.dark .text-black,
+html.dark .text-gray-900,
+html.dark .text-gray-800 { color: #f1f5f9; }
+html.dark .text-gray-700 { color: #e2e8f0; }
+html.dark .text-gray-600 { color: #cbd5e1; }
+html.dark .text-gray-500 { color: #94a3b8; }
+html.dark .border,
+html.dark .border-t,
+html.dark .border-b,
+html.dark .border-gray-200,
+html.dark .border-gray-300 { border-color: #334155; }
+html.dark input,
+html.dark select,
+html.dark textarea { background-color: #0f172a; color: #f1f5f9; border-color: #475569; }
+html.dark input[readonly] { background-color: #1e293b; }
+html.dark ::placeholder { color: #64748b; }
+html.dark .bg-red-50 { background-color: #3b1d1d; }
+html.dark .bg-amber-50 { background-color: #3b2f14; }
+html.dark .bg-green-50 { background-color: #14301f; }
+html.dark .bg-blue-50 { background-color: #172554; }
+html.dark .text-red-700 { color: #fca5a5; }
+html.dark .text-amber-800 { color: #fcd34d; }
+html.dark .text-green-700 { color: #86efac; }
+html.dark .text-blue-700 { color: #93c5fd; }
+html.dark .border-red-200 { border-color: #7f1d1d; }
+html.dark .border-amber-200 { border-color: #78350f; }
+
+/* ---------- Componentes ---------- */
+.skeleton { background: linear-gradient(90deg,#e5e7eb 25%,#f3f4f6 50%,#e5e7eb 75%); background-size: 200% 100%; animation: sk 1.2s infinite; }
+html.dark .skeleton { background: linear-gradient(90deg,#334155 25%,#475569 50%,#334155 75%); background-size: 200% 100%; }
+@keyframes sk { to { background-position: -200% 0; } }
+
+.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.foto-thumb { cursor: zoom-in; }
+
+#toasts { position: fixed; top: 1rem; right: 1rem; z-index: 100; display: flex; flex-direction: column; gap: .5rem; max-width: calc(100vw - 2rem); }
+.toast { padding: .75rem 1rem; border-radius: .75rem; color: #fff; font-size: .875rem; box-shadow: 0 10px 25px rgba(0,0,0,.2); animation: toastIn .2s ease-out; }
+.toast-ok { background: #16a34a; }
+.toast-erro { background: #dc2626; }
+.toast-info { background: #08088F; }
+@keyframes toastIn { from { opacity: 0; transform: translateY(-8px); } }
+
+/* ---------- Impressão (relatório semanal) ---------- */
+@media print {
+  #sidebar, #topbarMobile, #overlayMenu, .no-print, #toasts { display: none !important; }
+  html, body { background: #fff !important; color: #000 !important; }
+  main { padding: 0 !important; }
+  main > div { box-shadow: none !important; max-width: 100% !important; padding: 0 !important; }
+  .bg-white { background: #fff !important; }
+  .text-gray-800, .text-gray-700 { color: #111 !important; }
+  img { break-inside: avoid; }
+  .break-avoid { break-inside: avoid; }
+  @page { margin: 14mm; }
+}

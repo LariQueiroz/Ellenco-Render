@@ -1,0 +1,7 @@
+package com.ellenco.ellenco.exception;
+
+public class NaoEncontradoException extends RuntimeException {
+    public NaoEncontradoException(String mensagem) {
+        super(mensagem);
+    }
+}

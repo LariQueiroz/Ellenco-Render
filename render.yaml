@@ -1,0 +1,28 @@
+# Blueprint do Render: New + > Blueprint > selecione o repositorio.
+# O Render nao oferece MySQL gerenciado: use um MySQL externo (ver README)
+# e informe DB_URL / DB_USERNAME / DB_PASSWORD no painel.
+services:
+  - type: web
+    name: ellenco
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: DB_URL
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: APP_BASE_URL
+        sync: false
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: JPA_DDL_AUTO
+        value: update
+      - key: EMAIL_USERNAME
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false

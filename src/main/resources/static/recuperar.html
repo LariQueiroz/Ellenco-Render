@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recuperar Senha - Ellenco</title>
+
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/logo-ellenco.png">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/tema.js"></script>
+</head>
+
+<body
+    class="min-h-screen bg-gray-100 flex items-center justify-center px-4"
+>
+
+    <!-- CARD -->
+    <div
+        class="bg-white w-full max-w-[390px] rounded-[35px] shadow-2xl p-8 md:p-10"
+    >
+
+        <!-- LOGO -->
+        <div class="flex justify-center mb-6">
+
+            <img
+                src="img/logo-ellenco.png"
+                alt="Logo Ellenco"
+                class="w-[190px] h-auto"
+            >
+
+        </div>
+
+
+        <!-- TÍTULO -->
+        <h1 class="text-center text-2xl font-bold text-black mb-2">
+            Recuperar Senha
+        </h1>
+
+
+        <!-- TEXTO -->
+        <p class="text-center text-sm text-gray-600 mb-7">
+            Digite seu e-mail ou login para receber
+            as instruções de recuperação de senha.
+        </p>
+
+
+        <!-- FORMULÁRIO -->
+        <form id="formRecuperar">
+
+            <!-- E-MAIL OU LOGIN -->
+            <div class="mb-6">
+
+                <label
+                    for="emailRecuperar"
+                    class="block text-sm font-semibold text-black mb-2"
+                >
+                    E-mail ou Login
+                </label>
+
+                <input
+                    type="text"
+                    id="emailRecuperar"
+                    placeholder="Digite seu e-mail ou login"
+                    required
+                    class="w-full h-11 px-4 bg-gray-100 border border-gray-300 rounded-lg outline-none text-sm focus:border-purple-700 focus:ring-1 focus:ring-purple-700"
+                >
+
+            </div>
+
+
+            <!-- BOTÃO -->
+            <button
+                type="submit"
+                class="w-full h-11 bg-[#2100a8] hover:bg-[#180078] text-white font-semibold rounded-lg transition"
+            >
+                Enviar Instruções
+            </button>
+
+
+            <!-- MENSAGEM -->
+            <p
+                id="mensagemRecuperar"
+                class="text-center text-sm mt-4"
+            ></p>
+
+        </form>
+
+
+        <!-- VOLTAR -->
+        <div class="text-center mt-7">
+
+            <a
+                href="index.html"
+                class="text-blue-600 text-sm hover:underline"
+            >
+                Voltar para o Login
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+<script src="js/app.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

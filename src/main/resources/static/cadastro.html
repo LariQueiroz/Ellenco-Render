@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Criar Login - Ellenco</title>
+
+    <!-- TAILWIND -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="img/logo-ellenco.png">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="js/tema.js"></script>
+</head>
+
+<body
+    class="min-h-screen bg-gray-100 flex items-center justify-center px-4 py-8"
+>
+
+    <!-- CARD -->
+    <div
+        class="bg-white w-full max-w-[390px] rounded-[35px] shadow-2xl p-8 md:p-10"
+    >
+
+        <!-- LOGO -->
+        <div class="flex justify-center mb-5">
+
+            <img
+                src="img/logo-ellenco.png"
+                alt="Logo Ellenco"
+                class="w-[190px] h-auto"
+            >
+
+        </div>
+
+
+        <!-- TÍTULO -->
+        <h1 class="text-center text-2xl font-bold text-black mb-2">
+            Criar nova conta
+        </h1>
+
+
+        <!-- SUBTÍTULO -->
+        <p class="text-center text-sm text-gray-600 mb-6">
+            Preencha os dados para criar seu login
+        </p>
+
+
+        <!-- FORMULÁRIO -->
+        <form id="formCadastro">
+
+            <!-- NOME -->
+            <div class="mb-4">
+
+                <label
+                    for="nome"
+                    class="block text-sm font-semibold text-black mb-2"
+                >
+                    Nome completo
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome completo"
+                    required
+                    class="w-full h-11 px-4 bg-gray-100 border border-gray-300 rounded-lg outline-none text-sm focus:border-purple-700 focus:ring-1 focus:ring-purple-700"
+                >
+
+            </div>
+
+
+            <!-- E-MAIL -->
+            <div class="mb-4">
+
+                <label
+                    for="emailCadastro"
+                    class="block text-sm font-semibold text-black mb-2"
+                >
+                    E-mail
+                </label>
+
+                <input
+                    type="email"
+                    id="emailCadastro"
+                    name="email"
+                    placeholder="Digite seu e-mail"
+                    required
+                    class="w-full h-11 px-4 bg-gray-100 border border-gray-300 rounded-lg outline-none text-sm focus:border-purple-700 focus:ring-1 focus:ring-purple-700"
+                >
+
+            </div>
+
+
+            <!-- LOGIN -->
+            <div class="mb-4">
+
+                <label
+                    for="loginCadastro"
+                    class="block text-sm font-semibold text-black mb-2"
+                >
+                    Login
+                </label>
+
+                <input
+                    type="text"
+                    id="loginCadastro"
+                    name="login"
+                    placeholder="Digite seu login"
+                    required
+                    class="w-full h-11 px-4 bg-gray-100 border border-gray-300 rounded-lg outline-none text-sm focus:border-purple-700 focus:ring-1 focus:ring-purple-700"
+                >
+
+            </div>
+
+
+            <!-- SENHA -->
+            <div class="mb-4">
+
+                <label
+                    for="senhaCadastro"
+                    class="block text-sm font-semibold text-black mb-2"
+                >
+                    Senha
+                </label>
+
+                <div class="relative">
+
+                    <input
+                        type="password"
+                        id="senhaCadastro"
+                        name="senha"
+                        placeholder="Digite sua senha"
+                        required
+                        class="w-full h-11 px-4 pr-12 bg-gray-100 border border-gray-300 rounded-lg outline-none text-sm focus:border-purple-700 focus:ring-1 focus:ring-purple-700"
+                    >
+
+                    <button
+                        type="button"
+                        id="btnMostrarSenhaCadastro"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONFIRMAR SENHA -->
+            <div class="mb-5">
+
+                <label
+                    for="confirmarSenha"
+                    class="block text-sm font-semibold text-black mb-2"
+                >
+                    Confirmar senha
+                </label>
+
+                <div class="relative">
+
+                    <input
+                        type="password"
+                        id="confirmarSenha"
+                        placeholder="Confirme sua senha"
+                        required
+                        class="w-full h-11 px-4 pr-12 bg-gray-100 border border-gray-300 rounded-lg outline-none text-sm focus:border-purple-700 focus:ring-1 focus:ring-purple-700"
+                    >
+
+                    <button
+                        type="button"
+                        id="btnMostrarConfirmarSenha"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+                    >
+                        👁
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- CARGO -->
+            <div class="mb-5">
+                <label
+                    for="cargoCadastro"
+                    class="block text-sm font-semibold text-black mb-2"
+                >
+                    Cargo
+                </label>
+                <select
+                    id="cargoCadastro"
+                    name="cargo"
+                    required
+                    class="w-full h-11 px-4 bg-gray-100 border border-gray-300 rounded-lg outline-none text-sm focus:border-purple-700 focus:ring-1 focus:ring-purple-700"
+                >
+                    <option value="">Selecione</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Engenheiro">Engenheiro</option>
+                    <option value="Técnico">Técnico</option>
+                    <option value="Supervisor">Supervisor</option>
+                    <option value="Colaborador">Colaborador</option>
+                </select>
+            </div>
+
+<!-- BOTÃO -->
+            <button
+                type="submit"
+                class="w-full h-11 bg-[#2100a8] hover:bg-[#180078] text-white font-semibold rounded-lg transition"
+            >
+                Criar conta
+            </button>
+
+
+            <!-- MENSAGEM -->
+            <p
+                id="mensagemCadastro"
+                class="text-center text-sm mt-4"
+            ></p>
+
+        </form>
+
+
+        <!-- VOLTAR PARA LOGIN -->
+        <div class="text-center mt-6">
+
+            <span class="text-sm text-gray-700">
+                Já possui uma conta?
+            </span>
+
+            <a
+                href="index.html"
+                class="text-blue-600 text-sm ml-1 hover:underline"
+            >
+                Fazer Login
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+<script src="js/app.js"></script>
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
