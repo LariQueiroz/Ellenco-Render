@@ -15,14 +15,13 @@ public class EmailService {
     private final String appBaseUrl;
 
     public EmailService(
-            RestClient.Builder restClientBuilder,
             @Value("${resend.api.key}") String resendApiKey,
             @Value("${ellenco.from.email}") String fromAddress,
             @Value("${app.base-url:http://localhost:8080}") String appBaseUrl,
             @Value("${resend.api.url:https://api.resend.com/emails}") String resendApiUrl) {
         this.fromAddress = fromAddress;
         this.appBaseUrl = appBaseUrl.replaceAll("/+$", "");
-        this.resendClient = restClientBuilder
+        this.resendClient = RestClient.builder()
                 .defaultHeader("Authorization", "Bearer " + resendApiKey)
                 .build();
         this.resendApiUrl = resendApiUrl;
