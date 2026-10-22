@@ -56,12 +56,6 @@
             <artifactId>spring-boot-starter-webmvc</artifactId>
         </dependency>
 
-        <!-- Envio de e-mails SMTP, caso utilizado pelo código -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
-
         <!-- Ferramentas de desenvolvimento -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

@@ -47,7 +47,7 @@ export DB_USERNAME=root DB_PASSWORD=sua_senha
 mvn spring-boot:run
 ```
 Variáveis padrão (ver `application.properties`): `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`, `PORT`, `APP_BASE_URL`,
-`EMAIL_USERNAME`, `EMAIL_PASSWORD`, `COOKIE_SECURE`, `JPA_DDL_AUTO`.
+`RESEND_API_KEY`, `RESEND_FROM_EMAIL`, `COOKIE_SECURE`, `JPA_DDL_AUTO`.
 
 > A localização GPS do navegador só funciona em **HTTPS** ou em `localhost`.
 
@@ -65,7 +65,7 @@ ou um serviço privado com MySQL e disco persistente no próprio Render.
    | `DB_USERNAME` / `DB_PASSWORD` | credenciais do MySQL |
    | `APP_BASE_URL` | `https://SEU-APP.onrender.com` (usada no link do e-mail de recuperação) |
    | `COOKIE_SECURE` | `true` |
-   | `EMAIL_USERNAME` / `EMAIL_PASSWORD` | (opcional) Gmail + *senha de app* |
+   | `RESEND_API_KEY` / `RESEND_FROM_EMAIL` | chave API do Resend e remetente autorizado (domínio verificado) |
 4. Health check: `/api/health` (já no `render.yaml`).
 5. As tabelas são criadas/atualizadas automaticamente no primeiro start (`JPA_DDL_AUTO=update`).
 

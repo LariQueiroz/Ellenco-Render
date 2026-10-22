@@ -22,7 +22,7 @@ services:
         value: "true"
       - key: JPA_DDL_AUTO
         value: update
-      - key: EMAIL_USERNAME
+      - key: RESEND_API_KEY
         sync: false
-      - key: EMAIL_PASSWORD
+      - key: RESEND_FROM_EMAIL
         sync: false
