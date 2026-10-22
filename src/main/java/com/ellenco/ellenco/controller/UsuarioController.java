@@ -5,7 +5,6 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -38,9 +37,6 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
     private final EmailService emailService;
     private final SecurityContextRepository contextRepository = new HttpSessionSecurityContextRepository();
-
-    @Value("${app.base-url:http://localhost:8080}")
-    private String baseUrl;
 
     public UsuarioController(UsuarioService usuarioService, EmailService emailService) {
         this.usuarioService = usuarioService;
@@ -118,9 +114,9 @@ public class UsuarioController {
     @PostMapping("/esqueci-senha")
     public Map<String, String> esqueciSenha(@RequestBody RecuperacaoRequest dados) {
         usuarioService.gerarTokenRecuperacao(dados.email()).ifPresent(usuario -> {
-            String link = baseUrl + "/redefinir-senha.html?token=" + usuario.getTokenRecuperacao();
             try {
-                //EmailService..enviarEmailRecuperacao(usuario.getEmail(), link);
+                emailService.sendPasswordResetEmail(
+                        usuario.getEmail(), usuario.getNome(), usuario.getTokenRecuperacao());
             } catch (Exception e) {
                 // não revela ao cliente se o e-mail existe ou se o envio falhou
                 log.error("Falha ao enviar e-mail de recuperação para o usuário {}", usuario.getId(), e);
