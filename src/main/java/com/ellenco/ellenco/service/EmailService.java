@@ -1,7 +1,5 @@
 package com.ellenco.ellenco.service;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
@@ -10,58 +8,50 @@ import org.springframework.web.client.RestClient;
 import java.util.Map;
 
 @Service
-@RequiredArgsConstructor
-@Slf4j
 public class EmailService {
 
-    private final RestClient.Builder restClientBuilder = null;
+    private final RestClient resendClient;
+    private final String fromAddress;
+    private final String appBaseUrl;
 
-    @Value("${ellenco.mail.from}")
-    private String fromAddress;
+    public EmailService(
+            RestClient.Builder restClientBuilder,
+            @Value("${resend.api.key}") String resendApiKey,
+            @Value("${ellenco.from.email}") String fromAddress,
+            @Value("${app.base-url:http://localhost:8080}") String appBaseUrl,
+            @Value("${resend.api.url:https://api.resend.com/emails}") String resendApiUrl) {
+        this.fromAddress = fromAddress;
+        this.appBaseUrl = appBaseUrl.replaceAll("/+$", "");
+        this.resendClient = restClientBuilder
+                .defaultHeader("Authorization", "Bearer " + resendApiKey)
+                .build();
+        this.resendApiUrl = resendApiUrl;
+    }
 
-    @Value("${resend.api.key}")
-    private String resendApiKey;
-
-    @Value("${ellenco.app.base-url}")
-    private String appBaseUrl;
-
-    @Value("${ellenco.reset-token.expiration-minutes}")
-    private long expirationMinutes;
+    private final String resendApiUrl;
 
     public void sendPasswordResetEmail(String toEmail, String userName, String token) {
         String resetLink = appBaseUrl + "/redefinir-senha.html?token=" + token;
+        String safeName = userName == null ? "usuário" : userName
+                .replace("&", "&amp;").replace("<", "&lt;")
+                .replace(">", "&gt;").replace("\"", "&quot;").replace("'", "&#39;");
 
-        String htmlContent = "<p>Olá, <strong>" + userName + "</strong>!</p>" +
+        String htmlContent = "<p>Olá, <strong>" + safeName + "</strong>!</p>" +
                 "<p>Recebemos uma solicitação para redefinir a senha da sua conta Ellenco.</p>" +
                 "<p><a href=\"" + resetLink + "\" style=\"padding: 10px 15px; background: #1976D2; color: white; text-decoration: none; border-radius: 5px;\">Redefinir Senha</a></p>" +
-                "<p>Este link é válido por " + expirationMinutes + " minutos.</p>" +
+                "<p>Este link é válido por 30 minutos.</p>" +
                 "<p>Se você não solicitou, apenas ignore este e-mail.</p>" +
                 "<p>Equipe Ellenco</p>";
 
-        try {
-            RestClient restClient = restClientBuilder
-                    .baseUrl("https://api.resend.com")
-                    .defaultHeader("Authorization", "Bearer " + resendApiKey)
-                    .defaultHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
-                    .build();
-
-            Map<String, Object> requestBody = Map.of(
-                    "from", fromAddress,
-                    "to", new String[]{toEmail},
-                    "subject", "Ellenco — Redefinição de senha",
-                    "html", htmlContent
-            );
-
-            restClient.post()
-                    .uri("/emails")
-                    .body(requestBody)
-                    .retrieve()
-                    .toBodilessEntity();
-
-           
-        } catch (Exception ex) {
-           
-            throw ex;
-        }
+        resendClient.post()
+                .uri(resendApiUrl)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(Map.of(
+                        "from", fromAddress,
+                        "to", new String[]{toEmail},
+                        "subject", "Ellenco — Redefinição de senha",
+                        "html", htmlContent))
+                .retrieve()
+                .toBodilessEntity();
     }
 }
